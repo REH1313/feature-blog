@@ -1,5 +1,21 @@
 <?php
-require __DIR__ . '/../config/init.php';
+require __DIR__ . '/../config/db_connect.php';
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+$stmt =$db->prepare("SELECT * FROM users WHERE username = :username");
+$stmt->execute([':username' => $username, ':password' => $password]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($user) {
+    session_start();
+    $_SESSION['user'] = $user;
+    header("Location: admin/dashboard.php");
+    exit();
+} else {
+    $error = "Invalid username or password.";
+}
+
 $auth->requireAdmin();
 ?>
 <!DOCTYPE html>
