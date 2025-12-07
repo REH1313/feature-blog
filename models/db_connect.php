@@ -1,7 +1,7 @@
 <?php
-$host = "ftp://mywebtraining.net";
-$dbname = "reh144";
-$username = "reh144@mywebtraining.net";
+$host = "localhost";
+$dbname = "sherd_reh144";
+$username = "sherd_reh144";
 $password = "^pgzU%;d}}h9";
 
 try {
